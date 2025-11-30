@@ -1,0 +1,157 @@
+/* wrapper */
+.ttt-wrapper {
+  text-align: center;
+  color: #ff3a6f;
+  padding: 10px 0 30px;
+}
+
+/* title */
+.ttt-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #fff;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.12);
+}
+
+/* board container for relative overlay placement */
+.ttt-board-wrap {
+  position: relative;
+  display: inline-block;
+  perspective: 900px; /* for 3D message */
+}
+
+/* grid */
+.ttt-grid {
+  width: 280px;
+  height: 280px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 12px;
+  padding: 18px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  box-shadow: 0 12px 40px rgba(255, 60, 140, 0.12), inset 0 1px 0 rgba(255,255,255,0.02);
+}
+
+/* cell look */
+.ttt-cell {
+  background: rgba(255,255,255,0.14);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 2.4rem;
+  color: #ff2d6e;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.15s ease;
+  user-select: none;
+  border: 2px solid rgba(255,255,255,0.06);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.ttt-cell.empty:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.22);
+}
+
+.ttt-cell.filled {
+  cursor: default;
+  transform: none;
+}
+
+/* optionally style O marks differently (circle) */
+.ttt-cell.mark-o {
+  color: #ff4f88;
+  text-shadow: 0 2px 0 rgba(255,255,255,0.03);
+}
+
+/* STRIKE LINE - single element moved/scaled depending on winning pattern */
+/* base */
+.strike-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  transition: all 450ms cubic-bezier(.2,.9,.2,1);
+  opacity: 0;
+}
+
+/* the visible bar (pseudo) */
+.strike-line::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%) rotate(0deg);
+  width: 0;
+  height: 10px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(255,105,170,0.95));
+  box-shadow: 0 8px 30px rgba(255,60,120,0.25);
+  border-radius: 999px;
+  transition: width 420ms cubic-bezier(.2,.9,.2,1), transform 420ms;
+  opacity: 0;
+}
+
+/* when we have a strike line, show (we reveal via width) */
+.strike-line.row-0::after { width: 72%; transform: translate(-50%,-50%); opacity: 1; top: 18%; left: 50%; }
+.strike-line.row-1::after { width: 72%; transform: translate(-50%,-50%); opacity: 1; top: 50%; left: 50%; }
+.strike-line.row-2::after { width: 72%; transform: translate(-50%,-50%); opacity: 1; top: 82%; left: 50%; }
+
+.strike-line.col-0::after { width: 72%; transform: translate(-50%,-50%) rotate(90deg); opacity: 1; left: 18%; top: 50%; }
+.strike-line.col-1::after { width: 72%; transform: translate(-50%,-50%) rotate(90deg); opacity: 1; left: 50%; top: 50%; }
+.strike-line.col-2::after { width: 72%; transform: translate(-50%,-50%) rotate(90deg); opacity: 1; left: 82%; top: 50%; }
+
+.strike-line.diag-main::after { width: 105%; transform: translate(-50%,-50%) rotate(45deg); opacity: 1; left: 50%; top: 50%; }
+.strike-line.diag-anti::after { width: 105%; transform: translate(-50%,-50%) rotate(-45deg); opacity: 1; left: 50%; top: 50%; }
+
+/* 3D overlay pop card */
+.ttt-3d-overlay {
+  position: absolute;
+  inset: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events: none;
+}
+
+.ttt-3d-card {
+  pointer-events: auto;
+  width: 320px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,240,250,0.95));
+  box-shadow: 0 40px 80px rgba(255,60,120,0.15), 0 8px 30px rgba(0,0,0,0.12);
+  transform-origin: center;
+  transform: translateZ(60px) rotateX(12deg) scale(0.95);
+  text-align:center;
+  animation: pop3d 650ms cubic-bezier(.2,.9,.2,1) forwards;
+  color: #b30048;
+  font-weight: 800;
+}
+
+.ttt-3d-title {
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+.ttt-3d-sub {
+  font-size: 1.25rem;
+  color: #ff3370;
+  margin-top: 4px;
+}
+
+/* 3D pop animation */
+@keyframes pop3d {
+  0% { transform: translateZ(10px) rotateX(6deg) scale(0.9); opacity: 0; }
+  60% { transform: translateZ(80px) rotateX(8deg) scale(1.03); opacity: 1; }
+  100% { transform: translateZ(60px) rotateX(12deg) scale(1); opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .ttt-grid { width: 220px; height: 220px; gap: 10px; padding: 14px; }
+  .ttt-cell { font-size: 2rem; }
+  .ttt-3d-card { width: 90%; padding: 14px; }
+}

@@ -82,7 +82,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
-
+import TicTacToe from "../components/TicTacToe";
+import SongSlide from "../components/SlideSong"
 import "../styles/surprise-carousel.css";
 
 export default function SurpriseCarousel() {
@@ -118,49 +119,40 @@ export default function SurpriseCarousel() {
           </div>
         </SwiperSlide> */}
         <SwiperSlide>
-          <div className="slide-box">
-               { activeSlide === 0&&<>
-            <h3>This was the first time I saw you… 💗</h3>
-  
-
-            <div className="video-wrapper">
-              <video
-                src={BikeRide}
-                controls
-                className="slide-video"
-              />
-            </div>
-                      <p>
-             I waited for you for a long time…
-but the moment you arrived, time stopped for me.
-We shared food, shared laughs, shared stories,
-and walked under lights that looked like the sky itself was blessing us.
-But on that bike ride back…
-your hair brushing against me,
-your warmth beside me—
-that’s the moment my heart chose you without asking.
-            </p>
-            </>}
-          </div>
+          <div className="slide-box">{activeSlide === 0 && <TicTacToe />}</div>
         </SwiperSlide>
 
-        {/* Slide 2 */}
         <SwiperSlide>
           <div className="slide-box">
             {activeSlide === 1 && (
               <>
-                <h3>4 months of calls ☎️</h3>
-                <p>100s of hours of talking…</p>
-                <p>One voice that changed everything 💞</p>
+                <h3>This was the first time I saw you… 💗</h3>
+
+                <div className="video-wrapper">
+                  <video src={BikeRide} controls className="slide-video" />
+                </div>
+                <p>
+                  I waited for you for a long time… but the moment you arrived,
+                  time stopped for me. We shared food, shared laughs, shared
+                  stories, and walked under lights that looked like the sky
+                  itself was blessing us. But on that bike ride back… your hair
+                  brushing against me, your warmth beside me— that’s the moment
+                  my heart chose you without asking.
+                </p>
               </>
             )}
           </div>
         </SwiperSlide>
 
+        {/* Slide 2 */}
+        <SwiperSlide>
+          <div className="slide-box">{activeSlide === 2 && <SongSlide />}</div>
+        </SwiperSlide>
+
         {/* Slide 3 */}
         <SwiperSlide>
           <div className="slide-box">
-            {activeSlide === 2 && (
+            {activeSlide === 3 && (
               <>
                 <h3>You make me feel chosen… 💗</h3>
                 <p>Even from far away.</p>

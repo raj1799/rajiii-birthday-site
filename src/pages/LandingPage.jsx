@@ -6,10 +6,10 @@ import SurpriseCarousel from "../components/SurpriseCarousel";
 export default function LandingPage() {
   return (
     <div className="landing-container">
-        <Countdown />
+      <Countdown />
       <PolaroidsSection/>
-      <SurpriseCarousel/>
-      {/* <BirthdayCake/> */}
+      <SurpriseCarousel/> 
+       {/* <BirthdayCake/> */}
     </div>
   );
 }
