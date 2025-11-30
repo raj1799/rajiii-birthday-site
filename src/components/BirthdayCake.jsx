@@ -44,9 +44,9 @@ export default function BirthdayCake({ onFinish = () => {} }) {
           <h2>Happy Birthday, Rajiii ❤️</h2>
           <p>You deserve every bit of love today and always.</p>
 
-          <button className="start-btn" onClick={onFinish}>
+          {/* <button className="start-btn" onClick={onFinish}>
             Start Your Surprise ✨
-          </button>
+          </button> */}
         </div>
       )}
     </div>

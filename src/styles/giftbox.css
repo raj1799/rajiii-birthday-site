@@ -1,0 +1,153 @@
+.giftbox-section {
+  text-align: center;
+  padding: 60px 0;
+  color: white;
+}
+
+.giftbox-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 35px;
+}
+
+/* ROW OF BOXES */
+.giftbox-row {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* INDIVIDUAL BOX */
+.gift-box {
+  width: 110px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.gift-box p {
+  margin-top: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* BOX BODY */
+.box-body {
+  width: 100%;
+  height: 85px;
+  background: linear-gradient(180deg, #ffbdd9, #ff8fbc);
+  border-radius: 10px;
+  position: relative;
+}
+
+/* BOX TOP */
+.box-top {
+  width: 100%;
+  height: 35px;
+  background: #ff7fb3;
+  border-radius: 10px 10px 4px 4px;
+  margin-bottom: -5px;
+  z-index: 2;
+  position: relative;
+}
+
+/* HOVER EFFECT */
+.gift-box:hover {
+  transform: scale(1.12);
+}
+
+/* MODAL */
+/* .gift-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.modal-content {
+  width: 350px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 18px;
+  padding: 25px;
+  text-align: center;
+  animation: popIn 0.4s ease forwards;
+  color: white;
+}
+
+.modal-content img {
+  width: 80%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+} */
+
+
+.gift-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+
+  z-index: 999999; /* super high to beat all sections */
+  
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 25px;
+  width: 350px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  animation: popIn 0.3s ease;
+}
+
+.modal-content img {
+  width: 80%;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.close-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: none;
+  background: #ff5fa5;
+  color: white;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: #ff2f85;
+}
+
+/* ANIMATIONS */
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
