@@ -1,0 +1,84 @@
+.bike-intro-container{
+  width:100%;
+  display:flex;
+  gap:24px;
+  align-items:flex-start;
+  justify-content:space-between;
+  padding:24px 0;
+}
+
+.bike-left{ flex:1; display:flex; justify-content:flex-start}
+.video-card{
+  width:100%;
+  max-width:500px;
+  padding:18px;
+  background: rgba(255,255,255,0.1);
+  border-radius:16px;
+  box-shadow: 0 12px 30px rgba(255,0,130,0.12);
+}
+.slide-video-wrap{ display:flex; justify-content:center; align-items:center }
+.bike-video{ width:100%; max-width:420px; border-radius:12px; }
+
+.video-caption{ text-align:center; margin-top:12px; color:#fff; opacity:0.95}
+
+/* RIGHT */
+.heart-right{ flex:0 0 360px; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; position:relative; min-height:280px }
+
+.hint-text{ color:#fff; opacity:.9; margin-bottom:10px }
+
+/* perfect heart — css only */
+.main-heart{
+  width: clamp(110px, 16vw, 200px);
+  height: clamp(110px, 16vw, 200px);
+  background:#ff2d4f;
+  position:relative;
+  border-radius:50% 50% 50% 50%;
+  transform: rotate(45deg);
+  cursor:pointer;
+  display:block;
+}
+
+.main-heart::before,
+.main-heart::after{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:#ff2d4f;
+  border-radius:50%;
+  top:0;
+  left:0;
+}
+.main-heart::before{ left:-50% }
+.main-heart::after{ top:-50% }
+
+/* rotate upright visually by using container transform on inner */
+.main-heart{ transform: rotate(45deg); box-shadow: 0 10px 28px rgba(0,0,0,0.12); transition:transform .25s ease}
+
+/* beat */
+.beat{ animation: heartBeat 1.2s infinite ease-in-out;}
+@keyframes heartBeat{ 0%{transform:rotate(45deg) scale(1)} 50%{transform:rotate(45deg) scale(1.08)} 100%{transform:rotate(45deg) scale(1)}}
+
+/* click/pop */
+.click-pop{ animation: pop 0.25s forwards }
+@keyframes pop{ 0%{transform:rotate(45deg) scale(1)} 100%{transform:rotate(45deg) scale(.7)}}
+.disappear{ opacity:0; transition:opacity .4s ease }
+
+/* burst item base */
+.burst-item{ position:absolute; width:18px; height:18px; opacity:0; transform: translate(0,0) rotate(45deg) scale(.6); pointer-events:none}
+.burst-item.heart{ background:#ff3b5b; border-radius:3px; box-shadow:0 6px 18px rgba(255,70,120,0.18) }
+.burst-item.animate{ animation: flyOut 1.2s ease-out forwards; }
+@keyframes flyOut{ 0%{opacity:1; transform:translate(0,0) rotate(45deg) scale(.7)} 100%{opacity:0; transform:translate(var(--tx), var(--ty)) rotate(45deg) scale(1.1)} }
+
+/* intro text */
+.intro-text{ margin-top:12px; opacity:0; transition:opacity .45s ease }
+.intro-text.visible{ opacity:1; }
+.open-gift-btn{ margin-top:12px; background:#fff; color:var(--accent); padding:10px 18px; border-radius:22px; font-weight:700; border:none; cursor:pointer}
+
+/* responsive */
+@media (max-width:900px){
+  .bike-intro-container{ flex-direction:column; align-items:center }
+  .heart-right{ order:2; width:100%; min-height:200px }
+  .bike-left{ order:1 }
+  .main-heart{ width:120px; height:120px }
+}

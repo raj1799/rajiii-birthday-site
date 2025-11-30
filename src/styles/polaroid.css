@@ -1,0 +1,67 @@
+/* MAIN SECTION */
+.polaroid-section {
+  text-align: center;
+  margin: 50px auto;
+  width: 100%;
+}
+
+/* Polaroid Layout */
+.polaroid-container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+
+/* POLAROID CARD STYLE — bigger, cleaner */
+.polaroid-card {
+  width: 200px;                     /* Increased width */
+  background: white;
+  padding: 12px;
+  border-radius: 10px;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.18);
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+/* IMAGE — taller, full polaroid fill */
+.polaroid-card img {
+  width: 100%;
+  height: 350px;                    /* Increased height */
+  object-fit: cover;                /* Clean crop */
+  border-radius: 6px;
+}
+
+/* CAPTION */
+.polaroid-card p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #444;
+}
+
+/* REAL-POLAROID TILTS */
+.tilt-left { transform: rotate(-6deg); }
+.tilt-center { transform: rotate(1deg); }
+.tilt-right { transform: rotate(5deg); }
+
+/* HOVER (straightens) */
+.polaroid-card:hover {
+  transform: scale(1.08) rotate(0deg);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.22);
+}
+
+/* BOTTOM CAPTION */
+.polaroid-caption {
+  margin-top: 35px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: white;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.4;
+}
