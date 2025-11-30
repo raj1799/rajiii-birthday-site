@@ -1,67 +1,112 @@
-/* MAIN SECTION */
-.polaroid-section {
-  text-align: center;
-  margin: 50px auto;
-  width: 100%;
-}
-
-/* Polaroid Layout */
+/* POLAROID CONTAINER FIX */
 .polaroid-container {
   display: flex;
   gap: 30px;
   justify-content: center;
   flex-wrap: wrap;
   padding: 20px 0;
+  overflow: visible;
+  position: relative;
 }
 
-/* POLAROID CARD STYLE — bigger, cleaner */
+/* POLAROID CARD FIX */
 .polaroid-card {
-  width: 200px;                     /* Increased width */
+  position: relative;
+  width: 200px;
   background: white;
   padding: 12px;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 12px 25px rgba(0,0,0,0.18);
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.35s ease;
   cursor: pointer;
+  overflow: hidden;
+  transform-origin: center center;     /* <— IMPORTANT */
 }
 
-/* IMAGE — taller, full polaroid fill */
+/* SAFE TILT RANGE */
+.tilt-right { transform: rotate(3deg); }
+.tilt-center { transform: rotate(1deg); }
+.tilt-left { transform: rotate(-3deg); }
+
+/* HOVER */
+.polaroid-card:hover {
+  transform: scale(1.08) rotate(0deg);
+  z-index: 10;
+}
+
+/* IMAGE */
 .polaroid-card img {
   width: 100%;
-  height: 350px;                    /* Increased height */
-  object-fit: cover;                /* Clean crop */
+  height: 330px;
+  object-fit: cover;
   border-radius: 6px;
 }
 
-/* CAPTION */
+/* TEXT */
 .polaroid-card p {
-  margin-top: 10px;
   font-size: 0.9rem;
   font-weight: 500;
-  line-height: 1.2;
+  margin-top: 10px;
   color: #444;
 }
 
-/* REAL-POLAROID TILTS */
-.tilt-left { transform: rotate(-6deg); }
-.tilt-center { transform: rotate(1deg); }
-.tilt-right { transform: rotate(5deg); }
-
-/* HOVER (straightens) */
-.polaroid-card:hover {
-  transform: scale(1.08) rotate(0deg);
-  box-shadow: 0 16px 32px rgba(0,0,0,0.22);
+/* GIFT WRAP COVER FIX */
+.gift-cover {
+  position: absolute;
+  inset: 0;
+  background: #fff;
+  border-radius: 10px;
+  z-index: 5;
+  transition: opacity 0.6s ease;
 }
 
-/* BOTTOM CAPTION */
-.polaroid-caption {
-  margin-top: 35px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: white;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.4;
+/* Hide on hover */
+.polaroid-card:hover .gift-cover {
+  opacity: 0;
 }
+
+/* HEART PATTERN */
+.gift-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#ff7c9c 22%, transparent 22%);
+  background-size: 22px 22px;
+  opacity: 0.3;
+  border-radius: inherit;
+}
+
+/* RIBBONS */
+.ribbon-vertical,
+.ribbon-horizontal {
+  position: absolute;
+  background: #ff2d55;
+}
+
+.ribbon-vertical {
+  width: 14px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.ribbon-horizontal {
+  height: 14px;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* BOW FIXED SIZE + RESPONSIVE */
+.ribbon-bow {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
