@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import "../styles/songSlide.css";
- import Feet from "../assets/feet.jpg";   // replace with her photo
- import NeeKavithaigala from "../assets/Nee-Kavithaigala.mp3"; // replace with her song
+import Feet from "../assets/feet.jpg";     // replace with her photo
+import NeeKavithaigala from "../assets/Nee-Kavithaigala.mp3"; // replace with her song
 
 export default function SongSlide() {
   const audioRef = useRef(null);
@@ -11,6 +11,13 @@ export default function SongSlide() {
     if (audioRef.current) {
       audioRef.current.play();
       setPlaying(true);
+    }
+  };
+
+  const handlePause = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      setPlaying(false);
     }
   };
 
@@ -26,18 +33,22 @@ export default function SongSlide() {
           Every time I hear this song… it reminds me of you.
         </p>
 
-        {/* Play Button */}
-        {!playing && (
+        {/* Play / Pause Button */}
+        {!playing ? (
           <button className="play-btn" onClick={handlePlay}>
             ▶ Play our song 💗
+          </button>
+        ) : (
+          <button className="play-btn pause" onClick={handlePause}>
+            ❚❚ Pause 💞
           </button>
         )}
 
         {/* Audio */}
-         <audio ref={audioRef} src={NeeKavithaigala} /> 
+        <audio ref={audioRef} src={NeeKavithaigala} />
       </div>
 
-      {/* Floating Hearts Animation */}
+      {/* Floating Hearts */}
       <div className="floating-hearts">
         <span>💗</span>
         <span>💖</span>

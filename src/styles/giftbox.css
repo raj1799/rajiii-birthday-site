@@ -1,3 +1,7 @@
+/* -----------------------------------------
+   GIFT BOX SECTION LAYOUT
+----------------------------------------- */
+
 .giftbox-section {
   text-align: center;
   padding: 60px 0;
@@ -10,144 +14,199 @@
   margin-bottom: 35px;
 }
 
-/* ROW OF BOXES */
 .giftbox-row {
   display: flex;
   justify-content: center;
-  gap: 60px;
+  gap: 50px;
   flex-wrap: wrap;
-  margin-top: 20px;
 }
 
-/* INDIVIDUAL BOX */
+
+/* -----------------------------------------
+   GIFT BOX IMAGE BUTTON
+----------------------------------------- */
+
 .gift-box {
-  width: 110px;
   cursor: pointer;
-  transition: transform 0.3s ease;
   text-align: center;
+  transition: transform 0.25s ease;
 }
 
-.gift-box p {
-  margin-top: 12px;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-/* BOX BODY */
-.box-body {
-  width: 100%;
-  height: 85px;
-  background: linear-gradient(180deg, #ffbdd9, #ff8fbc);
-  border-radius: 10px;
-  position: relative;
-}
-
-/* BOX TOP */
-.box-top {
-  width: 100%;
-  height: 35px;
-  background: #ff7fb3;
-  border-radius: 10px 10px 4px 4px;
-  margin-bottom: -5px;
-  z-index: 2;
-  position: relative;
-}
-
-/* HOVER EFFECT */
 .gift-box:hover {
   transform: scale(1.12);
 }
 
-/* MODAL */
-/* .gift-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.65);
-  backdrop-filter: blur(6px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  animation: fadeIn 0.3s ease forwards;
+.gift-img {
+  width: 130px;
+  height: auto;
+  user-select: none;
 }
 
-.modal-content {
-  width: 350px;
-  background: rgba(255,255,255,0.2);
-  border-radius: 18px;
-  padding: 25px;
-  text-align: center;
-  animation: popIn 0.4s ease forwards;
+.gift-box p {
+  margin-top: 10px;
   color: white;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
-.modal-content img {
-  width: 80%;
-  border-radius: 12px;
-  margin-bottom: 15px;
-} */
 
+/* -----------------------------------------
+   MODAL OVERLAY
+----------------------------------------- */
 
 .gift-modal {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100vw;
   height: 100vh;
+
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(7px);
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(6px);
-
-  z-index: 999999; /* super high to beat all sections */
-  
+  z-index: 999999;
   animation: fadeIn 0.3s ease;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
+/* -----------------------------------------
+   MODAL CONTENT BOX
+----------------------------------------- */
+
 .modal-content {
-  background: rgba(255, 255, 255, 0.25);
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
   padding: 25px;
   width: 350px;
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
+  color: white;
 
   animation: popIn 0.3s ease;
 }
 
-.modal-content img {
-  width: 80%;
-  border-radius: 12px;
+@keyframes popIn {
+  0% { transform: scale(0.8) translateY(10px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+
+/* -----------------------------------------
+   IMAGE SURPRISE STYLE (Box 2)
+----------------------------------------- */
+
+.modal-image {
+  width: 90%;
+  border-radius: 10px;
   margin-bottom: 15px;
 }
 
-.close-btn {
+
+/* -----------------------------------------
+   MESSAGE SURPRISE STYLE (Box 3)
+----------------------------------------- */
+
+.modal-message {
+  font-size: 1.1rem;
+  margin: 10px 0 20px;
+  line-height: 1.5;
+}
+
+
+/* -----------------------------------------
+   DECORATIVE HISTORICAL LETTER (Box 1)
+----------------------------------------- */
+
+.letter-frame {
+  /* width: 100%; */
+  padding: 35px;
+  background: #f4e4c1; 
+  border-radius: 12px;
+  position: relative;
+
+  box-shadow: 
+    0 6px 18px rgba(0, 0, 0, 0.25),
+    inset 0 0 10px rgba(120, 85, 40, 0.25);
+
+  font-family: "Georgia", serif;
+  color: #4b2d17;
+
+  animation: fadeLetter 0.5s ease;
+}
+
+@keyframes fadeLetter {
+  0% { opacity: 0; transform: scale(0.96); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Decorative gold border */
+.letter-frame::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 3px solid #8b5e2b;
+  border-radius: 10px;
+
+  /* Choose corner cut mask */
+  mask-image:
+    radial-gradient(circle at top left, transparent 22%, black 24%),
+    radial-gradient(circle at top right, transparent 22%, black 24%),
+    radial-gradient(circle at bottom right, transparent 22%, black 24%),
+    radial-gradient(circle at bottom left, transparent 22%, black 24%);
+  mask-size: 50% 50%;
+  mask-repeat: no-repeat;
+  mask-position:
+    top left,
+    top right,
+    bottom right,
+    bottom left;
+}
+
+.letter-photo {
+  width: 80%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.letter-title {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #4b2d17;
+}
+
+.letter-text {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #4b2d17;
   margin-top: 10px;
-  padding: 10px 20px;
-  border: none;
+}
+
+
+/* -----------------------------------------
+   CLOSE BUTTON
+----------------------------------------- */
+
+.close-btn {
+  margin-top: 18px;
+  padding: 10px 22px;
   background: #ff5fa5;
   color: white;
+  border: none;
+  border-radius: 10px;
   font-size: 1rem;
-  border-radius: 8px;
   cursor: pointer;
+  transition: 0.2s ease;
 }
 
 .close-btn:hover {
-  background: #ff2f85;
-}
-
-/* ANIMATIONS */
-@keyframes popIn {
-  0% { transform: scale(0.5); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  background: #ff4597;
+  transform: scale(1.05);
 }

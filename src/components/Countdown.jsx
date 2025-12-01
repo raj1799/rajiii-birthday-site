@@ -3,8 +3,8 @@ import { calculateLifeStats } from "../utils/calculateLifestate";
 import BirthdayCake from "./BirthdayCake";
 
 export default function Countdown() {
-  // const birthday = "2025-12-10T00:00:00";
-  const birthday = "2025-12-01T01:13:00";
+  const birthday = "2025-12-10T11:29:00";
+  // const birthday = "2025-12-01T01:13:00";
   const birthDate = "2001-12-10T11:29:00";
   const [isBirthday, setIsBirthday] = useState(false);
 
