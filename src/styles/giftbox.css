@@ -80,18 +80,23 @@
 /* -----------------------------------------
    MODAL CONTENT BOX
 ----------------------------------------- */
-
 .modal-content {
   background: rgba(255, 255, 255, 0.18);
   border-radius: 18px;
   padding: 25px;
   width: 350px;
 
+  max-height: 80vh;        /* limit height */
+  overflow-y: auto;        /* make scrollable */
+  scrollbar-width: thin;   /* Firefox slim scrollbar */
+  scrollbar-color: #ff7ab5 transparent;
+
   text-align: center;
   color: white;
 
   animation: popIn 0.3s ease;
 }
+
 
 @keyframes popIn {
   0% { transform: scale(0.8) translateY(10px); opacity: 0; }
