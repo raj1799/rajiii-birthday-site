@@ -4,7 +4,7 @@ import Smile1 from "../assets/smile1.jpg";
 import Smile2 from "../assets/smile2.jpg";
 import Smile3 from "../assets/smile3.jpg";
 import Smile4 from "../assets/smile4.jpg";
-import FirstVc from "../assets/firstVC.jpg";
+import FirstVc from "../assets/firstVc.jpg";
 import Bow from "../assets/bow.jpg"
 
 export default function PolaroidsSection() {
