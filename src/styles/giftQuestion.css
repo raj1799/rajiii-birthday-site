@@ -1,0 +1,104 @@
+.qna-section {
+  text-align: center;
+  margin: 60px 0;
+  padding: 10px 20px;
+}
+
+.qna-title {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+}
+
+/* Clean 2x2 grid */
+.qna-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  max-width: 700px;
+  margin: auto;
+}
+
+/* CARD BASE STYLING */
+.qna-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px;
+  min-height: 170px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 8px 18px rgba(255, 120, 180, 0.25);
+  overflow: hidden;
+  position: relative;
+}
+
+.qna-card:hover {
+  transform: scale(1.03);
+}
+
+/* CLOSED STATE */
+.qna-closed {
+  text-align: center;
+}
+
+.qna-ribbon {
+  width: 70px;
+  height: 12px;
+  background: linear-gradient(45deg, #ff4da6, #ff77c9);
+  border-radius: 20px;
+  margin: 0 auto 10px auto;
+}
+
+.qna-hint {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ff2b7d;
+  margin-bottom: 6px;
+}
+
+.qna-question-preview {
+  color: #444;
+  font-size: 1rem;
+  padding: 0 10px;
+}
+
+/* OPEN STATE */
+.qna-card.open {
+  transform: scale(1.05);
+  box-shadow: 0 14px 30px rgba(255, 0, 120, 0.35);
+}
+
+.qna-open-content {
+  animation: fadeIn 0.35s ease forwards;
+}
+
+.qna-open-content h3 {
+  color: #ff2b7d;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.qna-open-content p {
+  color: #333;
+  font-size: 0.95rem;
+  line-height: 1.35;
+  padding: 0 8px 5px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE FIX FOR MOBILE */
+@media (max-width: 600px) {
+  .qna-list {
+    grid-template-columns: 1fr;
+  }
+}
