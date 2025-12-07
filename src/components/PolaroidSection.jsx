@@ -30,6 +30,7 @@ export default function PolaroidsSection() {
 
   return (
     <div className="bike-intro-container">
+      <h2>Hover or click to uncover our beautiful moment.💕</h2>
       <div className="polaroid-section">
         <div className="polaroid-container">
           {cards.map((card, i) => (
