@@ -48,9 +48,9 @@ export default function SurpriseCarousel() {
                 <p>
                   I waited for you for a long time… but the moment you arrived,
                   time stopped for me. We shared food, laughs, stories, and
-                  walked under lights that felt like blessings.  
-                  But that bike ride back… your hair touching me, your warmth —
-                  that’s the moment my heart chose you.
+                  walked under lights that felt like blessings. But that bike
+                  ride back… your hair touching me, your warmth — that’s the
+                  moment my heart chose you.
                 </p>
               </>
             )}
@@ -82,9 +82,8 @@ export default function SurpriseCarousel() {
                 <h3>A message from me… for you ❤️</h3>
 
                 <p className="video-sub">
-                  I was scared to say many things…  
-                  but never scared to say this —  
-                  **you mean everything to me. ❤️**
+                  I was scared to say many things… but never scared to say this
+                  — **you mean everything to me. ❤️**
                 </p>
 
                 <button
@@ -95,8 +94,8 @@ export default function SurpriseCarousel() {
                 </button>
 
                 <p className="video-caption">
-                  I recorded this with my whole heart…  
-                  I hope you feel every word, every emotion.
+                  I recorded this with my whole heart… I hope you feel every
+                  word, every emotion.
                 </p>
               </>
             )}
@@ -121,16 +120,15 @@ export default function SurpriseCarousel() {
               ✖
             </button>
 
- <div className="youtube-wrapper">
-  <iframe
-    src="https://www.youtube.com/embed/7Hv7iVdnp9s"
-    title="Message Video"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowFullScreen
-    className="youtube-iframe"
-  ></iframe>
-</div>
-
+            <div className="youtube-wrapper">
+              <iframe
+                src="https://www.youtube.com/embed/7Hv7iVdnp9s"
+                title="Message Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="youtube-iframe"
+              ></iframe>
+            </div>
           </div>
         </div>
       )}
