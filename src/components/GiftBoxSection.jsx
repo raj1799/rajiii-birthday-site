@@ -8,6 +8,8 @@ import gift1 from "../assets/gift1.jpg";
 import gift2 from "../assets/gift2.jpg";
 import gift3 from "../assets/gift3.png";
 import skydiving from "../assets/skydiving.jpg";
+import kurumugil from "../assets/kurumugil.mp3";
+
 export default function GiftBoxSection() {
   const [activeGift, setActiveGift] = useState(null);
 
@@ -35,9 +37,10 @@ export default function GiftBoxSection() {
       id: 3,
       title: "Peek Inside",
       img: saree1,
-      hint: "Peek Inside ✨",
+      hint: "second song for you✨",
       boxImg: gift3,
-      type: "message",
+      type: "song",
+      song: kurumugil,
     },
   ];
   const handleOnclick = (gift, index) => {
@@ -115,14 +118,21 @@ export default function GiftBoxSection() {
             )}
 
             {/* ============ TYPE 3: MESSAGE SURPRISE ============ */}
-            {activeGift.type === "message" && (
-              <>
-                <h3>{activeGift.title}</h3>
-                <p className="modal-message">
-                  Something cute or teasing can appear here… You tell me what to
-                  put 😉
-                </p>
-              </>
+            {activeGift.type === "song" && (
+              <div className="song-modal">
+                <img src={activeGift.img} alt="Her" className="modal-image" />
+
+                <audio
+                  src={activeGift.song}
+                  autoPlay
+                  controls
+                  className="song-player"
+                  onPlay={() => logEvent("song_started")}
+                  onPause={() => logEvent("song_paused")}
+                />
+
+                <p className="">I’ve seen this picture a thousand times, but every time feels new… and I’ve kissed it five thousand times because it feels like kissing you❤️</p>
+              </div>
             )}
 
             <button
