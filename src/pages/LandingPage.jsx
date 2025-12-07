@@ -5,6 +5,7 @@ import PolaroidsSection from "../components/PolaroidSection";
 import SurpriseCarousel from "../components/SurpriseCarousel";
 import GiftQuestionSection from "../components/GiftQuestionSection";
 import OrphanageCarousel from "../components/OrphanageCarousel";
+import FinalMessage from "../components/FinalMessage";
 export default function LandingPage() {
   return (
     <div className="landing-container">
@@ -14,6 +15,7 @@ export default function LandingPage() {
       <PolaroidsSection />
       <GiftBoxSection />
       <OrphanageCarousel />
+      <FinalMessage/>
       {/* <BirthdayCake/> */}
     </div>
   );
