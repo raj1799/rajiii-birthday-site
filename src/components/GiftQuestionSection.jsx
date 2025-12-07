@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../styles/giftQuestion.css";
+import { logEvent } from "../utils/logEvent";
+
 
 export default function GiftQuestionSection() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -22,13 +24,13 @@ export default function GiftQuestionSection() {
       a: "You can push me away, but I will still choose you… every single time 💘",
     },
     {
-        q:"If climate was good that day… what made your heart think of me first? 😏🌤️",
-        a:"Come on… it wasn’t the weather.It was your heart looking for a reason to hear my voice. 💕"
+      q: "If climate was good that day… what made your heart think of me first? 😏🌤️",
+      a: "Come on… it wasn’t the weather.It was your heart looking for a reason to hear my voice. 💕",
     },
     {
-        q:"Ready to see a few memories?",
-        a:"These are a piece of my heart — take care of them."
-    }
+      q: "Ready to see a few memories?",
+      a: "These are a piece of my heart — take care of them.",
+    },
   ];
 
   return (
@@ -40,7 +42,11 @@ export default function GiftQuestionSection() {
           <div
             key={i}
             className={`qna-card ${openIndex === i ? "open" : ""}`}
-            onClick={() => setOpenIndex(i)}
+            onClick={() => {
+              setOpenIndex(i);
+              // logEvent("qna_opened", { questionIndex: i });
+                logEvent(`opened_question_${i}`);
+            }}
           >
             {/* CLOSED STATE */}
             {openIndex !== i && (

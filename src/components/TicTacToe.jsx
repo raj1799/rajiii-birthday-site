@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "../styles/tictactoe.css";
+import { logEvent } from "../utils/logEvent";
 
 const WIN_COMBOS = [
   [0,1,2], [3,4,5], [6,7,8], // rows
@@ -29,6 +30,7 @@ export default function TicTacToe() {
   }
 
   function handleClick(index) {
+    logEvent(`Played Puzzle`)
     if (board[index] !== "_" || won) return;
 
     const newBoard = [...board];

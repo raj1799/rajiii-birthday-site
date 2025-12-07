@@ -83,11 +83,14 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import TicTacToe from "../components/TicTacToe";
-import SongSlide from "../components/SlideSong"
+import SongSlide from "../components/SlideSong";
 import "../styles/surprise-carousel.css";
-
+import MyMessageVideo from "../assets/selfVideo.mp4";
 export default function SurpriseCarousel() {
   const [activeSlide, setActiveSlide] = React.useState(0);
+  const [showVideoModal, setShowVideoModal] = React.useState(false);
+  const [stopVideo, setStopVideo] = React.useState(false);
+
   return (
     <div className="surprise-wrapper">
       <h2 className="surprise-title">Your Surprise Gallery 💖</h2>
@@ -160,6 +163,35 @@ export default function SurpriseCarousel() {
             )}
           </div>
         </SwiperSlide>
+        <SwiperSlide>
+          <div className="slide-box">
+            {activeSlide === 4 && (
+              <>
+                <h3>A message from me… for you ❤️</h3>
+
+                <p className="video-sub">
+                  I was scared to say many things… but I wasn’t scared to say
+                  this — you mean everything to me. ❤️
+                </p>
+
+                <button
+                  className="play-video-btn"
+                  onClick={() => {
+                    setShowVideoModal(true);
+                    setStopVideo(false);
+                  }}
+                >
+                  Play Video 🎥
+                </button>
+
+                <p className="video-caption">
+                  I recorded this with my whole heart… I hope you feel every
+                  word, every emotion.
+                </p>
+              </>
+            )}
+          </div>
+        </SwiperSlide>
 
         {/* Slide 4 */}
         {/* <SwiperSlide>
@@ -192,6 +224,42 @@ export default function SurpriseCarousel() {
           </div>
         </SwiperSlide> */}
       </Swiper>
+{showVideoModal && (
+  <div
+    className="video-modal-overlay"
+    onClick={() => {
+      setShowVideoModal(false);
+      setStopVideo(true);
+    }}
+  >
+    <div
+      className="video-modal-content"
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* Close Button */}
+      <button
+        className="video-modal-close"
+        onClick={() => {
+          setShowVideoModal(false);
+          setStopVideo(true);
+        }}
+      >
+        ✖
+      </button>
+
+      {/* Video */}
+      {!stopVideo && (
+        <video
+          src={MyMessageVideo}
+          controls
+          autoPlay
+          className="modal-video"
+        />
+      )}
+    </div>
+  </div>
+)}
+
     </div>
   );
 }

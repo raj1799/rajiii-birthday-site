@@ -1,14 +1,14 @@
 import React from "react";
-import "../styles/polaroid.css"
+import "../styles/polaroid.css";
 import Smile1 from "../assets/smile1.jpg";
 import Smile2 from "../assets/smile2.jpg";
 import Smile3 from "../assets/smile3.jpg";
 import Smile4 from "../assets/smile4.jpg";
 import FirstVc from "../assets/firstVc.jpg";
-import Bow from "../assets/bow.jpg"
+import Bow from "../assets/bow.jpg";
+import { logEvent } from "../utils/logEvent";
 
 export default function PolaroidsSection() {
-
   const cards = [
     {
       img: FirstVc,
@@ -31,18 +31,22 @@ export default function PolaroidsSection() {
   return (
     <div className="bike-intro-container">
       <div className="polaroid-section">
-        
         <div className="polaroid-container">
           {cards.map((card, i) => (
-            <div key={i} className="polaroid-card tilt-right">
-
+            <div
+              key={i}
+              className="polaroid-card tilt-right"
+              onMouseEnter={() => logEvent(`opened_polarid_image_${i}`)}
+            >
               {/* WRAPPER COVER */}
               <div className="gift-cover">
                 <div className="gift-pattern"></div>
                 <div className="ribbon-vertical"></div>
                 <div className="ribbon-horizontal"></div>
-                <div  className="ribbon-bow"
-  style={{ backgroundImage: `url(${Bow})` }}></div>
+                <div
+                  className="ribbon-bow"
+                  style={{ backgroundImage: `url(${Bow})` }}
+                ></div>
               </div>
 
               {/* ACTUAL IMAGE */}
@@ -55,9 +59,9 @@ export default function PolaroidsSection() {
         </div>
 
         <h3 className="polaroid-caption">
-          The pictures may be a little blurry… but the memories are crystal clear.
-          Those nights when we smiled, laughed, and forgot the world— I want that
-          happiness with you for the rest of my life.
+          The pictures may be a little blurry… but the memories are crystal
+          clear. Those nights when we smiled, laughed, and forgot the world— I
+          want that happiness with you for the rest of my life.
         </h3>
       </div>
     </div>
