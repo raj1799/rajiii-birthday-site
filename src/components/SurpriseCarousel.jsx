@@ -22,7 +22,9 @@ export default function SurpriseCarousel() {
 
   return (
     <div className="surprise-wrapper">
-      <h2 className="surprise-title">Your Surprise Gallery 💖</h2>
+      <h2 className="surprise-title">
+        Swipe to See What I’ve Been Saving Just for You… 💖
+      </h2>
 
       <Swiper
         modules={[Navigation, Pagination, EffectFade]}
@@ -92,11 +94,13 @@ export default function SurpriseCarousel() {
           <div className="slide-box">
             {activeSlide === 3 && (
               <>
-                <h3>Our Journey… in your eyes ❤️</h3>
+                <h3>From Strangers… to Something I Still Can’t Forget ❤️</h3>
 
                 <p className="video-sub">
-                  28 minutes of how I truly feel… the words I never found the
-                  courage to say directly.
+                  A journey from random messages… to late-night talks… to two
+                  hearts that accidentally chose each other. These 8 minutes
+                  carry every screenshot, every smile, every moment we became
+                  ‘us’ without realizing.
                 </p>
 
                 <button
@@ -112,7 +116,8 @@ export default function SurpriseCarousel() {
                 </button>
 
                 <p className="video-caption">
-                  This is every emotion… exactly as my heart felt it.
+                  Watch it slowly… this is our story — exactly how it happened,
+                  exactly how my heart remembers it.
                 </p>
               </>
             )}

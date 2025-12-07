@@ -56,43 +56,41 @@ export default function Countdown() {
   //   return () => clearInterval(timer);
   // }, []);
 
-useEffect(() => {
-  const BPM = 72; // change if you prefer a different beats-per-minute value
+  useEffect(() => {
+    const BPM = 72; // change if you prefer a different beats-per-minute value
 
-  const timer = setInterval(() => {
-    const stats = calculateLifeStats(birthDate); // days/hours/minutes/seconds
-    setLifeStats(stats);
+    const timer = setInterval(() => {
+      const stats = calculateLifeStats(birthDate); // days/hours/minutes/seconds
+      setLifeStats(stats);
 
-    // precise heartbeat calculation from elapsed ms:
-    const birth = new Date(birthDate);
-    const now = new Date();
-    const elapsedMinutes = (now - birth) / (1000 * 60); // float minutes
-    const exactHB = Math.floor(elapsedMinutes * BPM);
+      // precise heartbeat calculation from elapsed ms:
+      const birth = new Date(birthDate);
+      const now = new Date();
+      const elapsedMinutes = (now - birth) / (1000 * 60); // float minutes
+      const exactHB = Math.floor(elapsedMinutes * BPM);
 
-    setAnimatedHB(exactHB);
+      setAnimatedHB(exactHB);
 
-    // countdown
-    const target = new Date(birthday);
-    const diff = target - now;
-        if (diff <= 0) {
-      setIsBirthday(true);   // 🎉 SWITCH VIEW TO CAKE
-    //   clearInterval(timer);
-      return;
-    }
-    if (diff > 0) {
-      setTimeLeft({
-        days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-        minutes: Math.floor((diff / (1000 * 60)) % 60),
-        seconds: Math.floor((diff / 1000) % 60),
-      });
-    }
-  }, 1000);
+      // countdown
+      const target = new Date(birthday);
+      const diff = target - now;
+      if (diff <= 0) {
+        setIsBirthday(true); // 🎉 SWITCH VIEW TO CAKE
+        //   clearInterval(timer);
+        return;
+      }
+      if (diff > 0) {
+        setTimeLeft({
+          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+          minutes: Math.floor((diff / (1000 * 60)) % 60),
+          seconds: Math.floor((diff / 1000) % 60),
+        });
+      }
+    }, 1000);
 
-  return () => clearInterval(timer);
-}, []);
-
-
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div className="countdown-container">
@@ -104,13 +102,23 @@ useEffect(() => {
         <>
           <h1
             className="fade-in"
-            style={{ fontSize: "32px", fontWeight: "700" }}
+            style={{ fontSize: "22px", fontWeight: "700" }}
           >
-            Counting down to your special day, Rajiii… ❤️
+          Hello chellam… this is a small gift from my heart to my angel.
+          </h1>
+          <h1
+            className="fade-in"
+            style={{ fontSize: "22px", fontWeight: "700" }}
+          >
+            Counting down to the sunrise the world waited for… the day you were
+            born, Rajiii ❤️
           </h1>
 
-          <h2 className="fade-in" style={{ marginTop: "40px" }}>
-            Time left for your birthday 🎉
+          <h2
+            className="fade-in"
+            style={{ fontSize: "22px", marginTop: "40px" }}
+          >
+            Every second brings me closer to celebrating you again… 🎉✨
           </h2>
 
           <div className="timer-box fade-in">
@@ -121,8 +129,9 @@ useEffect(() => {
           </div>
         </>
       )}
-      <h2 className="fade-in" style={{ marginTop: "50px" }}>
-        Your journey till today ❤️
+      <h2 className="fade-in" style={{ fontSize: "22px", marginTop: "50px" }}>
+        Your journey till today — thousands of moments… all wrapped in the magic
+        called you. ❤️
       </h2>
 
       <div className="life-stats-box fade-in">
