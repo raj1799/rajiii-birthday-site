@@ -2,17 +2,23 @@ import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, EffectFade } from "swiper/modules";
 import BikeRide from "../assets/bikeRide.mp4";
+import TicTacToe from "../components/TicTacToe";
+import SongSlide from "../components/SlideSong";
+import MessageVideo from "../assets/selfVideo.mp4";
+import JourneyVideo from "../assets/journey.mp4";
+import { logEvent } from "../utils/logEvent";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
-import TicTacToe from "../components/TicTacToe";
-import SongSlide from "../components/SlideSong";
+
 import "../styles/surprise-carousel.css";
 
 export default function SurpriseCarousel() {
   const [activeSlide, setActiveSlide] = React.useState(0);
-  const [showVideoModal, setShowVideoModal] = React.useState(false);
+
+  const [showMessageModal, setShowMessageModal] = React.useState(false);
+  const [showJourneyModal, setShowJourneyModal] = React.useState(false);
 
   return (
     <div className="surprise-wrapper">
@@ -27,7 +33,15 @@ export default function SurpriseCarousel() {
         spaceBetween={30}
         className="surprise-swiper"
         onSlideChange={(swiper) => {
-          setActiveSlide(swiper.activeIndex);
+          const index = swiper.activeIndex;
+          setActiveSlide(index);
+
+          // 🔥 Firestore Log
+          logEvent("surprise_slide_viewed", {
+            slideNumber: index,
+            timestamp: Date.now(),
+          });
+          console.log("User is now on slide:", index);
         }}
       >
         {/* Slide 1 */}
@@ -45,12 +59,11 @@ export default function SurpriseCarousel() {
                 <div className="video-wrapper">
                   <video src={BikeRide} controls className="slide-video" />
                 </div>
+
                 <p>
-                  I waited for you for a long time… but the moment you arrived,
-                  time stopped for me. We shared food, laughs, stories, and
-                  walked under lights that felt like blessings. But that bike
-                  ride back… your hair touching me, your warmth — that’s the
-                  moment my heart chose you.
+                  I waited for you a long time… but when you arrived, time
+                  stopped. The walk, the lights, the ride back — that’s when my
+                  heart silently chose you.
                 </p>
               </>
             )}
@@ -63,7 +76,7 @@ export default function SurpriseCarousel() {
         </SwiperSlide>
 
         {/* Slide 4 */}
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <div className="slide-box">
             {activeSlide === 3 && (
               <>
@@ -72,9 +85,40 @@ export default function SurpriseCarousel() {
               </>
             )}
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
 
-        {/* Slide 5 → YouTube Modal Trigger */}
+        {/* ⭐ Slide 6 — Journey Video */}
+        <SwiperSlide>
+          <div className="slide-box">
+            {activeSlide === 3 && (
+              <>
+                <h3>Our Journey… in your eyes ❤️</h3>
+
+                <p className="video-sub">
+                  28 minutes of how I truly feel… the words I never found the
+                  courage to say directly.
+                </p>
+
+                <button
+                  className="play-video-btn"
+                  onClick={() => {
+                    setShowJourneyModal(true);
+                    logEvent("journey_video_played", {
+                      timestamp: Date.now(),
+                    });
+                  }}
+                >
+                  Watch Our Journey 🎥
+                </button>
+
+                <p className="video-caption">
+                  This is every emotion… exactly as my heart felt it.
+                </p>
+              </>
+            )}
+          </div>
+        </SwiperSlide>
+        {/* Slide 5 — Message Video */}
         <SwiperSlide>
           <div className="slide-box">
             {activeSlide === 4 && (
@@ -83,19 +127,23 @@ export default function SurpriseCarousel() {
 
                 <p className="video-sub">
                   I was scared to say many things… but never scared to say this
-                  — **you mean everything to me. ❤️**
+                  — you mean everything to me. ❤️
                 </p>
 
                 <button
                   className="play-video-btn"
-                  onClick={() => setShowVideoModal(true)}
+                  onClick={() => {
+                    setShowMessageModal(true);
+                    logEvent("Raj_video_played", {
+                      timestamp: Date.now(),
+                    });
+                  }}
                 >
                   Play Video 🎥
                 </button>
 
                 <p className="video-caption">
-                  I recorded this with my whole heart… I hope you feel every
-                  word, every emotion.
+                  I recorded this with all my heart… I hope you feel every word.
                 </p>
               </>
             )}
@@ -103,11 +151,16 @@ export default function SurpriseCarousel() {
         </SwiperSlide>
       </Swiper>
 
-      {/* ---------------- Modal ---------------- */}
-      {showVideoModal && (
+      {/* ---------------- MESSAGE VIDEO MODAL ---------------- */}
+      {showMessageModal && (
         <div
           className="video-modal-overlay"
-          onClick={() => setShowVideoModal(false)}
+          onClick={() => {
+            setShowMessageModal(false);
+            logEvent("Raj_video_closed", {
+              timestamp: Date.now(),
+            });
+          }}
         >
           <div
             className="video-modal-content"
@@ -115,20 +168,59 @@ export default function SurpriseCarousel() {
           >
             <button
               className="video-modal-close"
-              onClick={() => setShowVideoModal(false)}
+              onClick={() => {
+                setShowMessageModal(false);
+                logEvent("Raj_video_closed", {
+                  timestamp: Date.now(),
+                });
+              }}
             >
               ✖
             </button>
 
-            <div className="youtube-wrapper">
-              <iframe
-                src="https://www.youtube.com/embed/7Hv7iVdnp9s"
-                title="Message Video"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="youtube-iframe"
-              ></iframe>
-            </div>
+            <video
+              src={MessageVideo}
+              controls
+              autoPlay
+              className="modal-video"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* ---------------- JOURNEY VIDEO MODAL ---------------- */}
+      {showJourneyModal && (
+        <div
+          className="video-modal-overlay"
+          onClick={() => {
+            setShowJourneyModal(false);
+            logEvent("journey_video_closed", {
+              timestamp: Date.now(),
+            });
+          }}
+        >
+          <div
+            className="video-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              className="video-modal-close"
+              onClick={() => {
+                setShowJourneyModal(false);
+                logEvent("journey_video_closed", {
+                  timestamp: Date.now(),
+                });
+              }}
+            >
+              ✖
+            </button>
+
+            <video
+              src={JourneyVideo}
+              controls
+              autoPlay
+              className="modal-video"
+            />
           </div>
         </div>
       )}

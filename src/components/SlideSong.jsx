@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import "../styles/songSlide.css";
-import Feet from "../assets/feet.jpg";     // replace with her photo
+import Feet from "../assets/feet.jpg"; // replace with her photo
 import NeeKavithaigala from "../assets/Nee-Kavithaigala.mp3"; // replace with her song
-
+import { logEvent } from "../utils/logEvent";
 export default function SongSlide() {
   const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
@@ -11,6 +11,9 @@ export default function SongSlide() {
     if (audioRef.current) {
       audioRef.current.play();
       setPlaying(true);
+      logEvent("song_1_played", {
+        timestamp: Date.now(),
+      });
     }
   };
 
@@ -18,6 +21,9 @@ export default function SongSlide() {
     if (audioRef.current) {
       audioRef.current.pause();
       setPlaying(false);
+      logEvent("song_1_paused", {
+        timestamp: Date.now(),
+      });
     }
   };
 

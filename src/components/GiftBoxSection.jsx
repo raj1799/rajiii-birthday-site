@@ -7,7 +7,7 @@ import { logEvent } from "../utils/logEvent";
 import gift1 from "../assets/gift1.jpg";
 import gift2 from "../assets/gift2.jpg";
 import gift3 from "../assets/gift3.png";
-
+import skydiving from "../assets/skydiving.jpg";
 export default function GiftBoxSection() {
   const [activeGift, setActiveGift] = useState(null);
 
@@ -18,14 +18,15 @@ export default function GiftBoxSection() {
       img: saree1,
       letter:
         "This is how our future looks… and it’s more beautiful than anything I ever dreamed of.",
-      hint: "See Your Future 💍",
+      hint: "Letter for you.",
       boxImg: gift3,
       type: "letter",
     },
     {
       id: 2,
-      title: "A Special Gift",
-      img: saree1,
+      title:
+        "He can jump from 15,000 ft without fear…but the moment he thinks of you, his heart forgets how to breathe. Because falling for you was the highest, safest jump he ever took. Your special gift — don’t lose him.",
+      img: skydiving,
       hint: "A Special Gift 🎁",
       boxImg: gift3,
       type: "image",
@@ -39,11 +40,11 @@ export default function GiftBoxSection() {
       type: "message",
     },
   ];
-const handleOnclick = (gift, index) => {
-  console.log("Clicked:", gift, index);
-  setActiveGift(gift);
-  logEvent(`opened_gift_box_${gift.id}`);
-};
+  const handleOnclick = (gift, index) => {
+    console.log("Clicked:", gift, index);
+    setActiveGift(gift);
+    logEvent(`opened_gift_box_${gift.id}`);
+  };
 
   return (
     <div className="giftbox-section">
@@ -51,7 +52,7 @@ const handleOnclick = (gift, index) => {
 
       <div className="giftbox-row">
         {gifts.map((g, i) => (
-          <div key={i} className="gift-box" onClick={()=> handleOnclick(g,i)}>
+          <div key={i} className="gift-box" onClick={() => handleOnclick(g, i)}>
             <img src={g.boxImg} className="gift-img" alt="gift box" />
             <p>{g.hint}</p>
           </div>
@@ -124,7 +125,10 @@ const handleOnclick = (gift, index) => {
               </>
             )}
 
-            <button className="close-btn" onClick={() => setActiveGift(null)}>
+            <button
+              className="gift-close-btn"
+              onClick={() => setActiveGift(null)}
+            >
               Close
             </button>
           </div>

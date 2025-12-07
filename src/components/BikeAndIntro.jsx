@@ -1,6 +1,10 @@
 import React, { useRef, useState } from "react";
+import { logEvent } from "../utils/logEvent";
 
-export default function BikeAndIntro({ videoSrc = "/your-bike-video.mp4", onOpenGift = () => {} }) {
+export default function BikeAndIntro({
+  videoSrc = "/your-bike-video.mp4",
+  onOpenGift = () => {},
+}) {
   const rightRef = useRef(null);
   const heartRef = useRef(null);
 
@@ -49,13 +53,24 @@ export default function BikeAndIntro({ videoSrc = "/your-bike-video.mp4", onOpen
     <div className="bike-intro-container">
       <div className="bike-left">
         <div className="video-card slide-video-wrap">
-          <video src={videoSrc} controls className="bike-video" />
-          <p className="video-caption">Our bike ride — the moment that changed everything</p>
+          <video
+            src={videoSrc}
+            controls
+            className="bike-video"
+            onPlay={() => logEvent("bike_video_played")}
+            onPause={() => logEvent("bike_video_paused")}
+            onEnded={() => logEvent("bike_video_finished")}
+          />
+          <p className="video-caption">
+            Our bike ride — the moment that changed everything
+          </p>
         </div>
       </div>
 
       <div className="heart-right" ref={rightRef}>
-        {!popped && <p className="hint-text">Tap the heart to reveal our story</p>}
+        {!popped && (
+          <p className="hint-text">Tap the heart to reveal our story</p>
+        )}
 
         <div
           ref={heartRef}
@@ -67,9 +82,12 @@ export default function BikeAndIntro({ videoSrc = "/your-bike-video.mp4", onOpen
 
         {showText && (
           <div className="intro-text visible">
-            <p className="intro-line small">Our story didn’t need many moments…</p>
-            <h2 className="intro-line large">One meeting was enough to make me choose you.</h2>
-            <button className="open-gift-btn" onClick={onOpenGift}>Open Your Gift 🎁</button>
+            <p className="intro-line small">
+              Our story didn’t need many moments…
+            </p>
+            <h2 className="intro-line large">
+              One meeting was enough to make me choose you.
+            </h2>
           </div>
         )}
       </div>

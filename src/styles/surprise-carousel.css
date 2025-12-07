@@ -192,3 +192,11 @@
   height: 100%;
   border: none;
 }
+
+
+.modal-video {
+  width: 100%;
+  height: auto;
+  max-height: 80vh;
+  border-radius: 12px;
+}

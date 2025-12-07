@@ -101,6 +101,7 @@ export default function TicTacToe() {
             <div className="ttt-3d-card">
               <div className="ttt-3d-title">🎉 Congrats Rajiii…</div>
               <div className="ttt-3d-sub">You won my heart 💗</div>
+                          <div className="ttt-3d-sub">Move to next slide ...</div>
             </div>
           </div>
         )}
