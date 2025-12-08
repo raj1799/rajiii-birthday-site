@@ -4,7 +4,7 @@ import { logEvent } from "../utils/logEvent";
 import now from "../utils/helper";
 export default function OrphanageCarousel() {
   const [index, setIndex] = useState(0);
-
+  const [showJoinMessage, setShowJoinMessage] = useState(false);
   const slides = [
     {
       title: "A Birthday Wish Bigger Than Us… 💛",
@@ -63,7 +63,7 @@ it would mean a lot if you joined me.`,
 
     logEvent("orphanage_next_slide", {
       newIndex,
-     timestamp: String(now()), 
+      timestamp: String(now()),
     });
   };
 
@@ -73,7 +73,7 @@ it would mean a lot if you joined me.`,
 
     logEvent("orphanage_prev_slide", {
       newIndex,
-    timestamp: String(now()), 
+      timestamp: String(now()),
     });
   };
 
@@ -81,14 +81,15 @@ it would mean a lot if you joined me.`,
     setIndex(i);
     logEvent("orphanage_dot_clicked", {
       slideIndex: i,
-     timestamp: String(now()), 
+      timestamp: String(now()),
     });
   };
 
   const handleJoinClick = () => {
     logEvent("orphanage_join_clicked", {
-      timestamp: String(now()), 
+      timestamp: String(now()),
     });
+    setShowJoinMessage(true);
   };
 
   // log when each slide is viewed
@@ -96,7 +97,7 @@ it would mean a lot if you joined me.`,
     logEvent("orphanage_slide_viewed", {
       slideIndex: index,
       title: slides[index].title,
-     timestamp: String(now()), 
+      timestamp: String(now()),
     });
   }, [index]);
 
@@ -124,6 +125,15 @@ it would mean a lot if you joined me.`,
           </button>
         )}
       </div>
+{showJoinMessage && (
+  <div className="join-modal">
+    <p>
+     You're joining me...?
+My heart just smiled 💛
+Thank you, Rajiii. This means everything.
+    </p>
+  </div>
+)}
 
       {/* NAV BUTTONS */}
       <button className="nav-btn left" onClick={prevSlide}>
