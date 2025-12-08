@@ -7,6 +7,7 @@ import SongSlide from "../components/SlideSong";
 import MessageVideo from "../assets/selfVideo.mp4";
 import JourneyVideo from "../assets/journey.mp4";
 import { logEvent } from "../utils/logEvent";
+import now from "../utils/helper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -22,7 +23,7 @@ export default function SurpriseCarousel() {
 
   return (
     <div className="surprise-wrapper">
-      <h2 className="surprise-title" style={{ padding:"10px" }}>
+      <h2 className="surprise-title" style={{ padding: "10px" }}>
         Swipe to See What I’ve Been Saving Just for You… 💖
       </h2>
 
@@ -41,7 +42,7 @@ export default function SurpriseCarousel() {
           // 🔥 Firestore Log
           logEvent("surprise_slide_viewed", {
             slideNumber: index,
-            timestamp: Date.now(),
+            timestamp: String(now()), // make sure it's a STRING
           });
           console.log("User is now on slide:", index);
         }}
@@ -108,7 +109,7 @@ export default function SurpriseCarousel() {
                   onClick={() => {
                     setShowJourneyModal(true);
                     logEvent("journey_video_played", {
-                      timestamp: Date.now(),
+                      timestamp: String(now()), 
                     });
                   }}
                 >
@@ -140,7 +141,7 @@ export default function SurpriseCarousel() {
                   onClick={() => {
                     setShowMessageModal(true);
                     logEvent("Raj_video_played", {
-                      timestamp: Date.now(),
+                  timestamp: String(now()), 
                     });
                   }}
                 >
@@ -163,7 +164,7 @@ export default function SurpriseCarousel() {
           onClick={() => {
             setShowMessageModal(false);
             logEvent("Raj_video_closed", {
-              timestamp: Date.now(),
+              timestamp: String(now()), 
             });
           }}
         >
@@ -176,7 +177,7 @@ export default function SurpriseCarousel() {
               onClick={() => {
                 setShowMessageModal(false);
                 logEvent("Raj_video_closed", {
-                  timestamp: Date.now(),
+                 timestamp: String(now()), 
                 });
               }}
             >
@@ -200,7 +201,7 @@ export default function SurpriseCarousel() {
           onClick={() => {
             setShowJourneyModal(false);
             logEvent("journey_video_closed", {
-              timestamp: Date.now(),
+           timestamp: String(now()), 
             });
           }}
         >
@@ -213,7 +214,7 @@ export default function SurpriseCarousel() {
               onClick={() => {
                 setShowJourneyModal(false);
                 logEvent("journey_video_closed", {
-                  timestamp: Date.now(),
+                  timestamp: String(now()), 
                 });
               }}
             >

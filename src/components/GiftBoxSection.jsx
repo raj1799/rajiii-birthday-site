@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "../styles/giftbox.css";
-
 import saree1 from "../assets/saree1.jpg";
 import { logEvent } from "../utils/logEvent";
+import now from "../utils/helper";
+
 // GIFT BOX IMAGES
 import gift1 from "../assets/gift1.jpg";
 import gift2 from "../assets/gift2.jpg";
@@ -47,7 +48,9 @@ export default function GiftBoxSection() {
   const handleOnclick = (gift, index) => {
     console.log("Clicked:", gift, index);
     setActiveGift(gift);
-    logEvent(`opened_gift_box_${gift.id}`);
+    logEvent(`opened_gift_box_${gift.id}`,{
+       timestamp: String(now()), 
+    });
   };
 
   return (
@@ -107,6 +110,7 @@ export default function GiftBoxSection() {
                   people become a part of the way you breathe. And for me, that
                   person will always be you.
                 </p>
+<p>I love You Rajiii</p>
               </div>
             )}
 
@@ -128,8 +132,12 @@ export default function GiftBoxSection() {
                   autoPlay
                   controls
                   className="song-player"
-                  onPlay={() => logEvent("song_started")}
-                  onPause={() => logEvent("song_paused")}
+                  onPlay={() => logEvent("song_started",{
+                     timestamp: String(now()), 
+                  })}
+                  onPause={() => logEvent("song_paused",{
+                     timestamp: String(now()), 
+                  })}
                 />
 
                 <p className="">I’ve seen this picture a thousand times, but every time feels new… and I’ve kissed it five thousand times because it feels like kissing you❤️</p>

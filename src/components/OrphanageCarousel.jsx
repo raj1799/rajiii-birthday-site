@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/orphanageCarousel.css";
 import { logEvent } from "../utils/logEvent";
-
+import now from "../utils/helper";
 export default function OrphanageCarousel() {
   const [index, setIndex] = useState(0);
 
@@ -41,7 +41,7 @@ in your name.`,
 on your birthday.
 
 Not as a big gesture…
-but as a silent prayer for your happiness.
+but as a silent prayer for your happiness and success.
 
 If you feel comfortable,
 it would mean a lot if you joined me.`,
@@ -63,7 +63,7 @@ it would mean a lot if you joined me.`,
 
     logEvent("orphanage_next_slide", {
       newIndex,
-      timestamp: Date.now(),
+     timestamp: String(now()), 
     });
   };
 
@@ -73,7 +73,7 @@ it would mean a lot if you joined me.`,
 
     logEvent("orphanage_prev_slide", {
       newIndex,
-      timestamp: Date.now(),
+    timestamp: String(now()), 
     });
   };
 
@@ -81,13 +81,13 @@ it would mean a lot if you joined me.`,
     setIndex(i);
     logEvent("orphanage_dot_clicked", {
       slideIndex: i,
-      timestamp: Date.now(),
+     timestamp: String(now()), 
     });
   };
 
   const handleJoinClick = () => {
     logEvent("orphanage_join_clicked", {
-      timestamp: Date.now(),
+      timestamp: String(now()), 
     });
   };
 
@@ -96,7 +96,7 @@ it would mean a lot if you joined me.`,
     logEvent("orphanage_slide_viewed", {
       slideIndex: index,
       title: slides[index].title,
-      timestamp: Date.now(),
+     timestamp: String(now()), 
     });
   }, [index]);
 

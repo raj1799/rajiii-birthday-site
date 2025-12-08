@@ -1,10 +1,15 @@
 import { useState } from "react";
 import "../styles/cake.css";
+import now from "../utils/helper";
+import { logEvent } from "../utils/logEvent";
 
 export default function BirthdayCake({ onFinish = () => {} }) {
   const [blown, setBlown] = useState(false);
 
   function blowCandle() {
+    logEvent(`birthday candle blowed`, {
+      timestamp: String(now()),
+    });
     setBlown(true);
 
     // After animation, show next button
@@ -15,7 +20,6 @@ export default function BirthdayCake({ onFinish = () => {} }) {
 
   return (
     <div className="cake-wrapper">
-
       {/* Cake */}
       <div className="cake">
         <div className="top-layer"></div>
@@ -23,9 +27,7 @@ export default function BirthdayCake({ onFinish = () => {} }) {
         <div className="bottom-layer"></div>
 
         {/* Candle */}
-        <div className="candle">
-          {!blown && <div className="flame"></div>}
-        </div>
+        <div className="candle">{!blown && <div className="flame"></div>}</div>
       </div>
 
       {/* Button */}
@@ -42,7 +44,11 @@ export default function BirthdayCake({ onFinish = () => {} }) {
       {blown && (
         <div className="birthday-text">
           <h2>Happy Birthday, Rajiii ❤️</h2>
-          <p>You deserve every bit of love today and always.</p>
+          <p>
+            It’s your day, beautiful. Go conquer every dream you hold… and
+            remember, I’ll be right there—always the first one cheering,
+            celebrating, and loving you.
+          </p>
 
           {/* <button className="start-btn" onClick={onFinish}>
             Start Your Surprise ✨

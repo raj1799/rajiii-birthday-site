@@ -7,7 +7,7 @@ import Smile4 from "../assets/smile4.jpg";
 import FirstVc from "../assets/firstVc.jpg";
 import Bow from "../assets/bow.jpg";
 import { logEvent } from "../utils/logEvent";
-
+import now from "../utils/helper";
 export default function PolaroidsSection() {
   const cards = [
     {
@@ -37,7 +37,9 @@ export default function PolaroidsSection() {
             <div
               key={i}
               className="polaroid-card tilt-right"
-              onMouseEnter={() => logEvent(`opened_polarid_image_${i}`)}
+              onMouseEnter={() => logEvent(`opened_polarid_image_${i}`,{
+                 timestamp: String(now()), 
+              })}
             >
               {/* WRAPPER COVER */}
               <div className="gift-cover">

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/giftQuestion.css";
 import { logEvent } from "../utils/logEvent";
-
+import now from "../utils/helper";
 
 export default function GiftQuestionSection() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -45,7 +45,9 @@ export default function GiftQuestionSection() {
             onClick={() => {
               setOpenIndex(i);
               // logEvent("qna_opened", { questionIndex: i });
-                logEvent(`opened_question_${i}`);
+                logEvent(`opened_question_${i}`,{
+                   timestamp: String(now()), 
+                });
             }}
           >
             {/* CLOSED STATE */}

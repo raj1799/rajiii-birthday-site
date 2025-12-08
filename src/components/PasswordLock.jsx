@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/lock.css";
 import { logEvent } from "../utils/logEvent";
-
+import now from "../utils/helper";
 export default function PasswordLock({ onUnlock }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -16,14 +16,14 @@ export default function PasswordLock({ onUnlock }) {
       onUnlock(); 
 
       logEvent("website_unlocked", {
-        timestamp: Date.now(),
+        timestamp: String(now()), 
       });
     } else {
       setError(true);
       setPassword("");
 
       logEvent("wrong_password", {
-        timestamp: Date.now(),
+     timestamp: String(now()), 
       });
     }
   };

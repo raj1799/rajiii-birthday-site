@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { logEvent } from "../utils/logEvent";
-
+import now from "../utils/helper";
 export default function BikeAndIntro({
   videoSrc = "/your-bike-video.mp4",
   onOpenGift = () => {},
@@ -57,9 +57,15 @@ export default function BikeAndIntro({
             src={videoSrc}
             controls
             className="bike-video"
-            onPlay={() => logEvent("bike_video_played")}
-            onPause={() => logEvent("bike_video_paused")}
-            onEnded={() => logEvent("bike_video_finished")}
+            onPlay={() => logEvent("bike_video_played",{
+               timestamp: String(now()), 
+            })}
+            onPause={() => logEvent("bike_video_paused",{
+               timestamp: String(now()), 
+            })}
+            onEnded={() => logEvent("bike_video_finished",{
+               timestamp: String(now()), 
+            })}
           />
           <p className="video-caption">
             Our bike ride — the moment that changed everything

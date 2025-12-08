@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/finalMessage.css";
 import { logEvent } from "../utils/logEvent";
+import now from "../utils/helper";
 export default function FinalMessage() {
   const [showMessage, setShowMessage] = useState(false);
   const [showThankYou, setShowThankYou] = useState(false);
@@ -14,7 +15,7 @@ export default function FinalMessage() {
           onClick={() => {
             setShowMessage(true);
             logEvent("Final message opened", {
-              timestamp: Date.now(),
+              timestamp: String(now()), 
             });
           }}
         >
@@ -67,7 +68,7 @@ export default function FinalMessage() {
               setShowMessage(false);
               setShowThankYou(true);
               logEvent("she accepted you", {
-                timestamp: Date.now(),
+               timestamp: String(now()), 
               });
             }}
           >
