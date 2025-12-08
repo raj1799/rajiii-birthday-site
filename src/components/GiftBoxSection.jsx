@@ -51,7 +51,7 @@ export default function GiftBoxSection() {
 
   return (
     <div className="giftbox-section">
-      <h2 className="giftbox-title">Your Gift Box Surprise 🎁</h2>
+      <h2 className="giftbox-title" style={{ padding:"10px" }}>Your Gift Box Surprise 🎁</h2>
 
       <div className="giftbox-row">
         {gifts.map((g, i) => (

@@ -102,13 +102,13 @@ export default function Countdown() {
         <>
           <h1
             className="fade-in"
-            style={{ fontSize: "22px", fontWeight: "700" }}
+            style={{ fontSize: "22px", fontWeight: "700",padding:"10px" }}
           >
           Hello chellam… this is a small gift from my heart to my angel.
           </h1>
           <h1
             className="fade-in"
-            style={{ fontSize: "22px", fontWeight: "700" }}
+            style={{ fontSize: "22px", fontWeight: "700", padding:"10px" }}
           >
             Counting down to the sunrise the world waited for… the day you were
             born, Rajiii ❤️
@@ -116,7 +116,7 @@ export default function Countdown() {
 
           <h2
             className="fade-in"
-            style={{ fontSize: "22px", marginTop: "40px" }}
+            style={{ fontSize: "22px", marginTop: "40px", padding:"10px" }}
           >
             Every second brings me closer to celebrating you again… 🎉✨
           </h2>
@@ -129,7 +129,7 @@ export default function Countdown() {
           </div>
         </>
       )}
-      <h2 className="fade-in" style={{ fontSize: "22px", marginTop: "50px" }}>
+      <h2 className="fade-in" style={{ fontSize: "22px", marginTop: "50px", padding:"10px" }}>
         Your journey till today — thousands of moments… all wrapped in the magic
         called you. ❤️
       </h2>

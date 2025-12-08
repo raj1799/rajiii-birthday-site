@@ -86,3 +86,18 @@
   from { opacity: 0; transform: translate(-50%, -40%); }
   to   { opacity: 1; transform: translate(-50%, -50%); }
 }
+
+
+/* ⭐ Mobile responsiveness */
+@media (max-width: 480px) {
+.song-content {
+  padding: unset;
+}
+}
+
+/* ⭐ Small tablet */
+@media (max-width: 768px) {
+.song-content {
+  padding: unset;
+}
+}

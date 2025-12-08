@@ -13,7 +13,21 @@
   color: #8a5a00;
   transition: 0.3s ease;
 }
+/* ⭐ Mobile responsiveness */
+@media (max-width: 480px) {
+  .orphanage-carousel {
+    margin: 40px 15px;  /* Less top margin + small side margin */
+    padding: 30px 18px; /* Slightly reduced padding so it fits nicely */
+    border-radius: 18px;
+  }
+}
 
+/* ⭐ Small tablet */
+@media (max-width: 768px) {
+  .orphanage-carousel {
+    margin: 60px 20px;
+  }
+}
 /* ===============================
      SLIDE BOX
 =============================== */

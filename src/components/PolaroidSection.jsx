@@ -30,7 +30,7 @@ export default function PolaroidsSection() {
 
   return (
     <div className="bike-intro-container">
-      <h2>Hover or click to uncover our beautiful moment.💕</h2>
+      <h2 style={{ padding:"10px" }}>Hover or click to uncover our beautiful moment.💕</h2>
       <div className="polaroid-section">
         <div className="polaroid-container">
           {cards.map((card, i) => (
@@ -59,7 +59,7 @@ export default function PolaroidsSection() {
           ))}
         </div>
 
-        <h3 className="polaroid-caption">
+        <h3 className="polaroid-caption" style={{padding:"10px" }}>
           The pictures may be a little blurry… but the memories are crystal
           clear. Those nights when we smiled, laughed, and forgot the world— I
           want that happiness with you for the rest of my life.

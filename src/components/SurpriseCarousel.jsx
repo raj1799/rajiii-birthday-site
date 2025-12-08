@@ -22,7 +22,7 @@ export default function SurpriseCarousel() {
 
   return (
     <div className="surprise-wrapper">
-      <h2 className="surprise-title">
+      <h2 className="surprise-title" style={{ padding:"10px" }}>
         Swipe to See What I’ve Been Saving Just for You… 💖
       </h2>
 
