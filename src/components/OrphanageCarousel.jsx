@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/orphanageCarousel.css";
+import { logEvent } from "../utils/logEvent";
 
 export default function OrphanageCarousel() {
   const [index, setIndex] = useState(0);
@@ -54,10 +55,50 @@ it would mean a lot if you joined me.`,
     },
   ];
 
-  const nextSlide = () => setIndex((prev) => (prev + 1) % slides.length);
+  // ----------------- NAVIGATION LOGS -----------------
 
-  const prevSlide = () =>
-    setIndex((prev) => (prev - 1 + slides.length) % slides.length);
+  const nextSlide = () => {
+    const newIndex = (index + 1) % slides.length;
+    setIndex(newIndex);
+
+    logEvent("orphanage_next_slide", {
+      newIndex,
+      timestamp: Date.now(),
+    });
+  };
+
+  const prevSlide = () => {
+    const newIndex = (index - 1 + slides.length) % slides.length;
+    setIndex(newIndex);
+
+    logEvent("orphanage_prev_slide", {
+      newIndex,
+      timestamp: Date.now(),
+    });
+  };
+
+  const handleDotClick = (i) => {
+    setIndex(i);
+    logEvent("orphanage_dot_clicked", {
+      slideIndex: i,
+      timestamp: Date.now(),
+    });
+  };
+
+  const handleJoinClick = () => {
+    logEvent("orphanage_join_clicked", {
+      timestamp: Date.now(),
+    });
+  };
+
+  // log when each slide is viewed
+  React.useEffect(() => {
+    logEvent("orphanage_slide_viewed", {
+      slideIndex: index,
+      title: slides[index].title,
+      timestamp: Date.now(),
+    });
+  }, [index]);
 
   return (
     <div className="orphanage-carousel">
@@ -66,7 +107,7 @@ it would mean a lot if you joined me.`,
         <h2>{slides[index].title}</h2>
         <p className="slide-text">{slides[index].text}</p>
 
-        {/* ORPHANAGE INFO — only last slide */}
+        {/* ORPHANAGE INFO */}
         {slides[index].orphanage && (
           <div className="orphanage-info">
             <h3>{slides[index].orphanage.name}</h3>
@@ -76,12 +117,9 @@ it would mean a lot if you joined me.`,
           </div>
         )}
 
-        {/* JOIN BUTTON — last slide only */}
+        {/* JOIN BUTTON */}
         {index === slides.length - 1 && (
-          <button
-            className="join-btn"
-            onClick={() => console.log("join_orphanage_click")}
-          >
+          <button className="join-btn" onClick={handleJoinClick}>
             I will join you 💛
           </button>
         )}
@@ -101,7 +139,7 @@ it would mean a lot if you joined me.`,
           <span
             key={i}
             className={`dot ${i === index ? "active" : ""}`}
-            onClick={() => setIndex(i)}
+            onClick={() => handleDotClick(i)}
           ></span>
         ))}
       </div>

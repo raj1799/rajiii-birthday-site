@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/lock.css";
+import { logEvent } from "../utils/logEvent";
 
 export default function PasswordLock({ onUnlock }) {
   const [password, setPassword] = useState("");
@@ -12,10 +13,18 @@ export default function PasswordLock({ onUnlock }) {
 
     if (password.trim() === correctPassword) {
       setError(false);
-      onUnlock();  // Unlock the website
+      onUnlock(); 
+
+      logEvent("website_unlocked", {
+        timestamp: Date.now(),
+      });
     } else {
       setError(true);
       setPassword("");
+
+      logEvent("wrong_password", {
+        timestamp: Date.now(),
+      });
     }
   };
 
@@ -34,7 +43,9 @@ export default function PasswordLock({ onUnlock }) {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          {error && <p className="lock-error">Wrong password my love… try again 💔</p>}
+          {error && (
+            <p className="lock-error">Wrong password my love… try again 💔</p>
+          )}
 
           <button type="submit" className="lock-btn">
             Unlock 🔓
@@ -44,4 +55,3 @@ export default function PasswordLock({ onUnlock }) {
     </div>
   );
 }
- 

@@ -14,16 +14,7 @@ export default function GiftBoxSection() {
   const [activeGift, setActiveGift] = useState(null);
 
   const gifts = [
-    {
-      id: 1,
-      title: "Future Us Married",
-      img: saree1,
-      letter:
-        "This is how our future looks… and it’s more beautiful than anything I ever dreamed of.",
-      hint: "Letter for you.",
-      boxImg: gift3,
-      type: "letter",
-    },
+
     {
       id: 2,
       title:
@@ -42,6 +33,16 @@ export default function GiftBoxSection() {
       type: "song",
       song: kurumugil,
     },
+        {
+      id: 1,
+      title: "Future Us Married",
+      img: saree1,
+      letter:
+        "This is how our future looks… and it’s more beautiful than anything I ever dreamed of.",
+      hint: "Letter for you.",
+      boxImg: gift3,
+      type: "letter",
+    },
   ];
   const handleOnclick = (gift, index) => {
     console.log("Clicked:", gift, index);
@@ -51,7 +52,7 @@ export default function GiftBoxSection() {
 
   return (
     <div className="giftbox-section">
-      <h2 className="giftbox-title" style={{ padding:"10px" }}>Your Gift Box Surprise 🎁</h2>
+      <h2 className="giftbox-title" style={{ padding:"10px" }}>Come Closer… Peek Inside 😉💕 🎁</h2>
 
       <div className="giftbox-row">
         {gifts.map((g, i) => (
